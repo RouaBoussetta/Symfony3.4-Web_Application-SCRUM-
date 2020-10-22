@@ -1,0 +1,116 @@
+product_backlog_homepage:
+    path:     /anis
+    defaults: { _controller: ProductBacklogBundle:ProductBacklog:accueil }
+
+
+productaddProductBacklog:
+    path:     /addProductBacklog
+    defaults: { _controller: ProductBacklogBundle:ProductBacklog:addProductBacklog }
+
+productaffiche:
+    path:     /affiche
+    defaults: { _controller: ProductBacklogBundle:ProductBacklog:affiche }
+
+
+productSimulationTheme:
+    path:     /Simulation/{idBacklog}
+    defaults: { _controller: ProductBacklogBundle:ProductBacklog:simulation }
+
+ThemeajoutTheme:
+    path:     /ajoutTheme/{idBacklog}
+    defaults: { _controller: ProductBacklogBundle:Theme:ajoutTheme }
+
+ThemeafficheTheme:
+    path:     /afficheTheme/{idBacklog}
+    defaults: { _controller: ProductBacklogBundle:Theme:afficheTheme }
+
+
+featureadd:
+    path:     /ajouttt/{idTheme}
+    defaults: { _controller: ProductBacklogBundle:Feature:ajoutFeature }
+
+featureAfgiche:
+    path:     /afficheFeature/{idTheme}
+    defaults: { _controller: ProductBacklogBundle:Feature:afficheFeature }
+
+
+featureProgress:
+    path:     /Proress/{idFeature}
+    defaults: { _controller: ProductBacklogBundle:Feature:Proress }
+
+
+
+
+userStoryOpen:
+    path:     /afficheUS/{idFeature}
+    defaults: { _controller: ProductBacklogBundle:UserStory:afficheUserStory }
+
+
+
+addus:
+    path:     /ajoutUS/{idFeature}
+    defaults: { _controller: ProductBacklogBundle:UserStory:ajoutUserStory }
+
+updo:
+    path:     /updoing/{idus}
+    defaults: { _controller: ProductBacklogBundle:UserStory:update }
+
+testuser:
+    path:    /test/{idff}
+    defaults: { _controller: ProductBacklogBundle:ProductBacklog:testuser }
+
+affectUser:
+    path:    /affectUser/{iduser}/{idf}
+    defaults: { _controller: ProductBacklogBundle:Feature:affectUserToFeatre }
+
+
+
+afficheapi:
+    path:     /affichee
+    defaults: { _controller: ProductBacklogBundle:ProductBacklog:alll }
+
+
+APIreadTheme:
+    path:     /afficheeTheme/{idBacklog}
+    defaults: { _controller: ProductBacklogBundle:Theme:APIafficheTheme }
+
+
+APIreadFeature:
+    path:     /afficheeFeature/{idTheme}
+    defaults: { _controller: ProductBacklogBundle:Feature:APIafficheFeature }
+
+
+APIreadProcess:
+    path:     /processFeature/{idFeature}
+    defaults: { _controller: ProductBacklogBundle:Feature:APIProress }
+
+APIreadUSerStory:
+    path:     /afficheeUser/{idFeature}
+    defaults: { _controller: ProductBacklogBundle:UserStory:afficheeUserStory }
+
+
+APIaddTheme:
+    path:     /addtheme/{nomTheme}/{idBacklog}
+    defaults: { _controller: ProductBacklogBundle:Theme:ajouttTheme }
+
+APIaddFeature:
+    path:     /addfeature/{nomFeature}/{idTheme}
+    defaults: { _controller: ProductBacklogBundle:Feature:ajouttFeature }
+
+APIaddUserStory:
+    path:     /addUserStory/{userStoryDescription}/{totalEstimationUserstoryJours}/{priority}/{idFeature}
+    defaults: { _controller: ProductBacklogBundle:UserStory:ajouttUserStory }
+
+APIupdateUserStory:
+    path:     /upUserStory/{idus}/{input}
+    defaults: { _controller: ProductBacklogBundle:UserStory:updatee }
+
+
+
+devuser:
+    path:    /developper
+    defaults: { _controller: ProductBacklogBundle:ProductBacklog:allDevlopper }
+
+APIaffectUser:
+    path:    /affectUserr/{iduser}/{idf}
+    defaults: { _controller: ProductBacklogBundle:Feature:affectUserToFeature }

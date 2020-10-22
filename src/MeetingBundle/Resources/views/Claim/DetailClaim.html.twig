@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block container %}
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                        <li class="breadcrumb-item active">Claims</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Meeting Claim</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="width: 50%;  margin-left: 300px">
+        <div class="card-body">
+            <img src="{{ asset('uploads/Claim/claim.png') }}" alt="" height="100px" style="margin-left: 250px">
+
+            <form>
+                <table  style="padding: 15px; margin-left: 150px">
+
+                    <tr  style="padding: 15px">
+                        <th  style="padding: 15px">Name :</th>
+                        <td  style="padding: 15px" >{{ name }}</td>
+                    </tr>
+                    <tr  style="padding: 15px" >
+                        <th  style="padding: 15px" >Lastname :</th>
+                        <td   style="padding: 15px">{{ lastname }}</td>
+                    </tr>
+
+                    <tr  style="padding: 15px">
+                        <th  style="padding: 15px">Phone number :</th>
+                        <td   style="padding: 15px">{{ tel }}</td>
+                    </tr>
+                    <tr  style="padding: 15px">
+                        <th  style="padding: 15px">Meeting :</th>
+                        <td   style="padding: 15px">{{ meeting.titleMeeting }}</td>
+                    </tr>
+                    <tr  style="padding: 15px">
+                        <th  style="padding: 15px">Mail Adress :</th>
+                        <td   style="padding: 15px">{{ mail }}</td>
+                    </tr>
+
+                    <tr  style="padding: 15px">
+                        <th  style="padding: 15px">Availability :</th>
+                        <td   style="padding: 15px">{{ available }}</td>
+                    </tr>
+                    <tr  style="padding: 15px">
+                        <th  style="padding: 15px">Other :</th>
+                        <td   style="padding: 15px">{{ other }}</td>
+                    </tr>
+                    <tr  style="padding: 15px">
+                        <th  style="padding: 15px">Reason : </th>
+                        <td   style="padding: 15px">{{ reason }}</td>
+                    </tr>
+                </table>
+
+            </form>
+<br>
+            <br>
+            <a href="{{path('Show_Claim')}}" class="card-link">Back</a>
+
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

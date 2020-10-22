@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Types list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idtype</th>
+                <th>Nomtype</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type in types %}
+            <tr>
+                <td><a href="{{ path('type_show', { 'idType': type.idType }) }}">{{ type.idType }}</a></td>
+                <td>{{ type.nomType }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('type_show', { 'idType': type.idType }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('type_edit', { 'idType': type.idType }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('type_new') }}">Create a new type</a>
+        </li>
+    </ul>
+{% endblock %}

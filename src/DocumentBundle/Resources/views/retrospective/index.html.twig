@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+<div class="row">
+    <div class="col-12 text-center" >
+        <div class="heading">
+            <h1 class="section-title">Retrospective Documents</h1>
+            <h4 class="sub-title">List of your Retrospective Documents from here !</h4>
+            <br>
+            <br>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row mb-2">
+                    {% if is_granted('ROLE_PRODUCT_OWNER') or is_granted('ROLE_MASTER') or is_granted('ROLE_ADMIN') %}
+                    <div class="col-sm-4">
+                        <a href="{{ path('retrospective_new') }}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle mr-2"></i> Add Retrospective</a>
+                    </div>
+                    {% endif %}
+
+                    <div class="table-responsive">
+
+                        {% block table %}
+                        {% endblock %}
+
+
+                    </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

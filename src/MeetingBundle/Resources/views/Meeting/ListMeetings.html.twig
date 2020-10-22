@@ -1,0 +1,210 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('Template/assets/css/vendor/fullcalendar.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- third party css end -->
+
+
+
+{% endblock %}
+
+
+
+   {% block container %}
+
+
+
+       <div class="container-fluid">
+
+           <!-- start page title -->
+           <div class="row">
+               <div class="col-12">
+                   <div class="page-title-box">
+                       <div class="page-title-right">
+                           <ol class="breadcrumb m-0">
+                               <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                               <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                               <li class="breadcrumb-item"><a href="javascript: void(0);">Calendar</a></li>
+
+                               <li class="breadcrumb-item active">Latest Meetings</li>
+                           </ol>
+                       </div>
+                       <h4 class="page-title">Meetings</h4>
+                   </div>
+               </div>
+           </div>
+           <!-- end page title -->
+
+           <div class="row" >
+               <div class="col-12">
+
+
+                   <div class="card" >
+                       <div class="card-body">
+                           <div class="row">
+
+
+                               <div class="col-lg-10">
+
+                                   <div class="container" style="text-align: center">
+                                       <div class="row">
+                                           <div class="col-12 text-center">
+                                               <div class="heading">
+                                                   <h1 class="section-title" style="color: black">Latest Meetings</h1>
+                                                   <h4 class="sub-title">You can show more details about meetings from here ! </h4>
+                                                   <br>
+                                                   <br>
+
+                                                   <div class="container h-100">
+                                                       <div class="d-flex justify-content-center h-100" >
+                                                           <div class="searchbar">
+                                                               <input class="search_input" type="text" id="myInput" name="" placeholder="Search...">
+                                                               <a href="{{path('Search')}}" class="search_icon"><i class="fas fa-search"></i></a>
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                                   <br>
+                                               </div>
+                                           </div>
+
+                                           <table class="table table-bordered "id="">
+                                               {% for m in meetings %}
+
+                                                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4" id="myTable" >
+                                                       <div class="featured-box">
+                                                           <figure id="">
+                                                               <div class="homes-tag featured" style="text-align: center">{{m.type}}</div>
+                                                               <div class="homes-tag rent"><i class="lni-heart"></i> </div>
+
+                                                               <img class="img-fluid" style="width: 3cm;height: 3cm;text-align:center;" src="{{ asset('uploads/Meeting/calendar.png') }}" alt="">
+                                                           </figure>
+                                                           <div class="content-wrapper">
+                                                               <div class="feature-content" style="text-align: center">
+                                                                   <h4>{{m.titleMeeting}}</h4>
+                                                                   <div class="listing-review">
+                                                                       <span class="review-avg"></span>
+
+                                                                   </div>
+                                                                   <p class="listing-tagline"></p>
+                                                                   <div class="meta-tag">
+
+                                                                       <div class="user-name">
+                                                                           <a href="#"><i class="lni-user"></i></a>
+                                                                       </div>
+                                                                       <div class="listing-category">
+                                                                           <a href="#"><i class="lni-alarm-clock"></i></a>
+                                                                       </div>
+                                                                   </div>
+                                                               </div>
+                                                               <div class="listing-bottom clearfix">
+                                                                   <div class="btn-group">
+
+                                                                       <a href="{{ path('meeting_Modify',{'id': m.id}) }}"><button type="button" class="btn btn-outline-primary">Update</button></a>
+                                                                       <a href="{{ path('delete_meeting',{'id': m.id}) }}"><button type="button" class="btn btn-outline-danger">Delete</button></a>
+                                                                       <a href="{{ path('meeting_detail',{'id': m.id}) }}"><button type="button" class="btn btn-outline-success">View</button></a>
+
+                                                                   </div>
+                                                                   <br><br><br>
+
+                                                               </div>
+                                                           </div>
+                                                       </div>
+                                                   </div>
+
+                                               {% endfor %}
+
+                                           </table>
+                                       </div>
+
+
+                                   </div>
+                               </div> <!-- end col -->
+
+
+
+                               <div class="card"  style="width: 16% ; right: auto;background-color: #D9DDE1">
+                                   <div class="card-body">
+                                       <div class="row">
+
+                                           <div >
+                                               <h5 class="m-0"></h5>
+                                           </div>
+
+                                           <div class="rightbar-content h-100" >
+
+                                               <div class="p-3">
+                                                   <img src="{{ asset('uploads/Media/meeting.png') }}" alt="" style="width: 3cm;height: 2cm" height="16">
+
+
+                                                   <!-- Settings -->
+                                                   <h5 class="mt-3">Refine by</h5>
+                                                   <hr class="mt-1" />
+
+                                                   <div >
+                                                       <a href="{{path('Refine_meeting',{'type':"Daily"})}}" class="custom-control-label" for="light-mode-check">Daily</a>
+                                                   </div>
+
+                                                   <div >
+                                                       <a href="{{path('Refine_meeting',{'type':"Review"})}}" class="custom-control-label" for="light-mode-check">Review</a>
+                                                   </div>
+                                                   <div >
+                                                       <a href="{{path('Refine_meeting',{'type':"Sprint"})}}" class="custom-control-label" for="light-mode-check">Sprint</a>
+                                                   </div>
+                                                   <div >
+                                                       <a href="{{path('Refine_meeting',{'type':"Retrospective"})}}" class="custom-control-label" for="light-mode-check">Retrospective</a>
+                                                   </div>
+
+                                                   <!-- Left Sidebar-->
+                                                   <h5 class="mt-4">Order by </h5>
+                                                   <hr class="mt-1" />
+
+                                                   <div>
+                                                       <a class="col-6" href="{{ path('Sort_meeting_DESC') }}"> <i class="fa fa-calendar-check-o">Descending </i></a>
+                                                       <a class="col-6" href="{{ path('Sort_meeting_ASC') }}"> <i class="fa fa-calendar-check-o">Ascending</i></a>
+
+                                                       <form method="get">
+                                                           <a href="#"><i class="fa fa-refresh"></i></a>
+                                                       </form>
+                                                   </div>
+
+
+
+                                                   <button class="btn btn-primary btn-block mt-4" id="resetBtn">Reset to Default</button>
+
+                                                   <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
+                                                      class="btn btn-danger btn-block mt-3" target="_blank"><i class="mdi mdi-basket mr-1"></i> Purchase
+                                                       Now</a>
+                                               </div> <!-- end padding-->
+
+                                           </div>
+
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>  <!-- end row -->
+                       </div> <!-- end card body-->
+                   </div> <!-- end card -->
+
+                   <!-- Add New Event MODAL -->
+
+                   <!-- end modal-->
+
+                   <!-- Modal Add Category -->
+
+                   <!-- end modal-->
+               </div>
+               <!-- end col-12 -->
+           </div> <!-- end row -->
+
+       </div> <!-- container -->
+
+   {% endblock %}
+
+
+
+
+
+
+        {##}
+
+

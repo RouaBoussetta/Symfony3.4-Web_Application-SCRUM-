@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+
+{% block container %}
+
+
+    <div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">My Account</a></li>
+
+                        <li class="breadcrumb-item active">Profile</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Profile view</h4>
+            </div>
+        </div>
+    </div>
+
+        <div class="card text-center" style="width: 50%; height: 50%; margin-left: 300px">
+            <div class="card-body">
+
+
+                <img src="{{ asset('uploads/Media/' ~userPhoto) }}" class="rounded-circle avatar-lg img-thumbnail"  alt="profile-image">
+
+                <h4 class="mb-0 mt-2">{{app.user.username}}</h4>
+                <p class="text-muted font-14">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        Administrator
+                    {% elseif is_granted('ROLE_MASTER') %}
+                        Master
+                    {% elseif is_granted('ROLE_DEVELOPER') %}
+                        Developer
+                    {% elseif is_granted('ROLE_PRODUCT_OWNER') %}
+Product Owner
+                    {% else %}
+
+Administrator
+                    {% endif %}</p>
+
+
+                <a href="{{ path('DeveloperProfile') }}"><button type="button" class="btn btn-success btn-sm mb-2">Edit</button></a>
+                <button type="button" class="btn btn-danger btn-sm mb-2">Message</button>
+
+                <div class="text-left mt-3">
+                    <h4 class="font-13 text-uppercase">About Me :</h4>
+                    <p class="text-muted font-13 mb-3">
+                        Hi I'm {{app.user.username}} Deo,has been the industry's standard dummy text ever since the
+                        1500s, when an unknown printer took a galley of type.
+                    </p>
+                    <p class="text-muted mb-2 font-13"><strong>Full Name :</strong>
+                        <span class="ml-2">{{ app.user.username }}   </span></p>
+
+                    <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">
+                                                  {{ userPhone }}</span></p>
+
+                    <p class="text-muted mb-2 font-13"><strong>Email : </strong> <span class="ml-2 ">{{app.user.email}}</span></p>
+                    <p class="text-muted mb-2 font-13"><strong> Date Of Birth:</strong><span class="ml-2">
+                                                  {{ userDayBirth|date }}</span></p>
+
+                    <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2">
+                    {{ userAddress }}
+                </span></p>
+
+                    <p class="text-muted mb-1 font-13"><strong>Nationality :</strong> <span class="ml-2">
+                    {{ nationality }}
+                </span></p>
+                    <p class="text-muted mb-1 font-13"><strong>Speciality :</strong> <span class="ml-2">
+                    {{ speciality }}
+                </span></p>
+
+                    <p class="text-muted mb-1 font-13"><strong>Bio :</strong> <span class="ml-2">
+                    {{ bio }}
+                </span></p>
+                </div>
+
+                <ul class="social-list list-inline mt-3 mb-0">
+                    <li class="list-inline-item">
+                        <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i
+                                    class="mdi mdi-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i
+                                    class="mdi mdi-google"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="javascript: void(0);" class="social-list-item border-info text-info"><i
+                                    class="mdi mdi-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i
+                                    class="mdi mdi-github-circle"></i></a>
+                    </li>
+                </ul>
+            </div> <!-- end card-body -->
+        </div> <!-- end card -->
+
+    </div>
+
+{% endblock %}

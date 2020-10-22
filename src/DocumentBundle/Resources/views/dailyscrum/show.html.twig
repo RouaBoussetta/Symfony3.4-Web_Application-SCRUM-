@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+    <h1>Dailyscrum</h1>
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-body">
+    <table  class="table table-centered table-borderless mb-0">
+        <tbody>
+            <tr>
+                <th>Id : </th>
+                <td>{{ dailyscrum.idDaily }}</td>
+            </tr>
+            <tr>
+                <th>File Name : </th>
+                <td>{{ dailyscrum.title }}</td>
+            </tr>
+            <tr>
+                <th>Yesterday work : </th>
+                <td>{{ dailyscrum.yesterdaywork }}</td>
+            </tr>
+            <tr>
+                <th>Today plan : </th>
+                <td>{{ dailyscrum.todayplan }}</td>
+            </tr>
+            <tr>
+                <th>Work Blockers : </th>
+                <td>{{ dailyscrum.blockers }}</td>
+            </tr>
+            <tr>
+                <th>Brunt hours : </th>
+                <td>{{ dailyscrum.hrsbrunt }}</td>
+            </tr>
+            <tr>
+                <th>Completed Hours : </th>
+                <td>{{ dailyscrum.hrscompleted }}</td>
+            </tr>
+            <tr>
+                <th>Creation Date : </th>
+                <td>{% if dailyscrum.dateCreation %}{{ dailyscrum.dateCreation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Creation Time : </th>
+                <td>{% if dailyscrum.timeCreation %}{{ dailyscrum.timeCreation|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modify Date : </th>
+                <td>{% if dailyscrum.dateModification %}{{ dailyscrum.dateModification|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modify Time: </th>
+                <td>{% if dailyscrum.timeModification %}{{ dailyscrum.timeModification|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Created By: </th>
+                <td>{{ dailyscrum.username }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table class="table table-centered table-borderless mb-0">
+        <thead>
+
+            <tr><a  class="btn btn-primary" href="{{ path('document_dailyscrum') }}">Back to the list </a></tr>
+
+            <tr><a class="btn btn-success" href="{{ path('dailyscrum_edit', { 'idDaily': dailyscrum.idDaily }) }}">Edit</a></tr>
+
+            {{ form_start(delete_form) }}
+             <tr><input class="btn btn-danger" type="submit" value="Delete"></tr>
+            {{ form_end(delete_form) }}
+
+        </thead>
+    </table>
+
+    </div>
+</div>
+    </div>
+
+
+{% endblock %}

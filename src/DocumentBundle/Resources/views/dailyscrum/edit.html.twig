@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+    <h1>Dailyscrum edit</h1>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+
+
+<table class="table mb-0">
+    <thead>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+   <tr> <input class="btn btn-success" class="btn btn-success"  type="submit" value="Save" /></tr>
+    {{ form_end(edit_form) }}
+
+            <tr ><a class="btn btn-primary" href ="{{ path('document_dailyscrum') }}" >Back to the list</a></tr>
+
+    </thead>
+</table>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

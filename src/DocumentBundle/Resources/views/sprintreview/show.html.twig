@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+
+    <h1>Sprintreview</h1>
+{#
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-centered table-borderless mb-0">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sprintreview.idReview }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ sprintreview.title }}</td>
+            </tr>
+            <tr>
+                <th>Project Name</th>
+                <td>{{ sprintreview.projectname }}</td>
+            </tr>
+            <tr>
+                <th>Things To demo</th>
+                <td>{{ sprintreview.thingstodemo }}</td>
+            </tr>
+            <tr>
+                <th>Quick updates</th>
+                <td>{{ sprintreview.quickupdates }}</td>
+            </tr>
+            <tr>
+                <th>What is next</th>
+                <td>{{ sprintreview.whatisnext }}</td>
+            </tr>
+            <tr>
+                <th>Creation Date </th>
+                <td>{% if sprintreview.dateCreation %}{{ sprintreview.dateCreation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Creation Time</th>
+                <td>{% if sprintreview.timeCreation %}{{ sprintreview.timeCreation|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modify Date</th>
+                <td>{% if sprintreview.dateModification %}{{ sprintreview.dateModification|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modify Time</th>
+                <td>{% if sprintreview.timeModification %}{{ sprintreview.timeModification|date('H:i:s') }}{% endif %}</td>
+            </tr>
+
+            <tr>
+                <th>Created By</th>
+                <td>{{ sprintreview.user }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+            <a href="{{ path('sprintreview_index') }}" class="btn btn-primary">Back to the list</a>
+
+            <a href="{{ path('sprintreview_edit', { 'idReview': sprintreview.idReview }) }}" class="btn btn-success" >Save</a>
+
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Delete">
+            {{ form_end(delete_form) }}
+
+            </div>
+        </div>
+    </div>
+
+
+    #}
+
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <table  class="table table-centered table-borderless mb-0">
+                    <tbody>
+                    <tr>
+                        <th>Id : </th>
+                        <td>{{ sprintreview.idDaily }}</td>
+                    </tr>
+                    <tr>
+                        <th>File Name : </th>
+                        <td>{{ sprintreview.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Yesterday work : </th>
+                        <td>{{ sprintreview.yesterdaywork }}</td>
+                    </tr>
+                    <tr>
+                        <th>Today plan : </th>
+                        <td>{{ sprintreview.todayplan }}</td>
+                    </tr>
+                    <tr>
+                        <th>Work Blockers : </th>
+                        <td>{{ sprintreview.blockers }}</td>
+                    </tr>
+                    <tr>
+                        <th>Brunt hours : </th>
+                        <td>{{ sprintreview.hrsbrunt }}</td>
+                    </tr>
+                    <tr>
+                        <th>Completed Hours : </th>
+                        <td>{{ sprintreview.hrscompleted }}</td>
+                    </tr>
+                    <tr>
+                        <th>Creation Date : </th>
+                        <td>{% if sprintreview.dateCreation %}{{ sprintreview.dateCreation|date('Y-m-d') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Creation Time : </th>
+                        <td>{% if sprintreview.timeCreation %}{{ sprintreview.timeCreation|date('H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Modify Date : </th>
+                        <td>{% if sprintreview.dateModification %}{{ sprintreview.dateModification|date('Y-m-d') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Modify Time: </th>
+                        <td>{% if sprintreview.timeModification %}{{ sprintreview.timeModification|date('H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Created By: </th>
+                        <td>{{ sprintreview.username }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <table class="table table-centered table-borderless mb-0">
+                    <thead>
+
+                    <tr><a  class="btn btn-primary" href="{{ path('document_sprintreview') }}">Back to the list </a></tr>
+
+                    <tr><a class="btn btn-success" href="{{ path('sprintreview_edit', {  'idReview': sprintreview.idReview }) }}">Edit</a></tr>
+
+                    {{ form_start(delete_form) }}
+                    <tr><input class="btn btn-danger" type="submit" value="Delete"></tr>
+                    {{ form_end(delete_form) }}
+
+                    </thead>
+                </table>
+                <a href="{{ path('sprintreview_index') }}" class="btn btn-primary">Back to the list</a>
+
+                <a href="{{ path('sprintreview_edit', { 'idReview': sprintreview.idReview }) }}" class="btn btn-success" >Save</a>
+
+                {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Delete">
+                {{ form_end(delete_form) }}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+{% block container %}
+
+    {% for message in app.flashes('successf') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+<p> Listes des Fonctionalites</p>
+{%  for f in Feature %}
+<div class="table-responsive">
+    <table class="table table-centered table-nowrap table-hover mb-0">
+        <tbody>
+        <tr>
+            <td>
+                <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">Feature Name: </a></h5>
+                <span class="text-muted font-13">{{ f.nomFeature }}</span>
+            </td>
+            <td>
+                <span class="text-muted font-13">Status</span> <br/>
+                 {% block sss %}
+                        {% if f.statue == 0 %}
+                        <span class="badge badge-danger-lighten">
+                             Not Strat Yet </span>
+                        {% endif %}
+                    {% if f.statue == 1 %}
+                      <span class="badge badge-info-lighten">
+                             In progress </span>
+                        {% endif %}
+                    {% if f.statue == 2 %}
+                       <span class="badge badge-success-lighten">
+                             Done Success</span>
+                        {% endif %}
+
+
+                    {% endblock %}
+
+
+            </td>
+            <td>
+
+
+                <span class="text-muted font-13">Assigned to</span>
+
+                {% block ssss %}
+                    {%  for user in users %}
+
+                    {% if f.idUserRespensability == user.id %}
+                        <h5 class="font-14 mt-1 font-weight-normal">{{user.name}}  {{user.lastname}} </h5>
+
+                    {% endif %}
+                    {% endfor %}
+                {% endblock %}
+
+
+
+
+
+            </td>
+            <td>
+                <span class="text-muted font-13">Total time spend</span>
+                <h5 class="font-14 mt-1 font-weight-normal">{{f.totalEstimationFeatureJours}}</h5>
+            </td>
+            <td class="table-action" style="width: 90px;">
+
+
+                <a href="{{ path('testuser',{'idff' :f.idFeature}) }}"> <i class=" uil-user-plus"></i></a>
+
+
+                <a href="{{ path('featureProgress',{'idFeature' :f.idFeature}) }}" class="action-icon"> <i class="mdi mdi-google-analytics"></i></a>
+                <a href="{{ path('userStoryOpen',{'idFeature' :f.idFeature}) }}"> <i class="dripicons-folder-open"></i></a>
+                {% block ss %}
+                    {% if is_granted('ROLE_PRODUCT_OWNER') == true %}
+                        <a href="{{ path('addus',{'idFeature' :f.idFeature}) }}"> <i class="mdi mdi-plus-circle"></i></a>
+
+                    {% endif %}
+
+                {% endblock %}
+
+            </td>
+        </tr>
+
+
+        </tbody>
+    </table>
+</div> <!-- end table-responsive-->
+
+
+
+{% endfor %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

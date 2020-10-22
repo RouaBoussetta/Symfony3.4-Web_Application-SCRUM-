@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+    {% block javascripts %}
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('#myInput').keyup(function(){
+                    search_table($(this).val());
+                });
+                function search_table(value){
+                    $('#myTable tr').each(function(){
+                        var found = 'false';
+                        $(this).each(function(){
+                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                            {
+                                found = 'true';
+                            }
+                        });
+                        if(found == 'true')
+                        {
+                            $(this).show();
+                        }
+                        else
+                        {
+                            $(this).hide();
+                        }
+                    });
+                }
+            });
+        </script>
+
+
+        <script>
+
+            $(document).ready(function () {
+                $('#my_table').DataTable({
+                    dom: "<'row'<'col-sm-12'B>>" +
+                        "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                        "<'row'<'col-sm-12'tr>>" +
+                        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                    lengthMenu: [
+                        [ 5, 10, 20, -1 ],
+                        [ '5 rows', '10 rows', '20 rows', 'Show all' ]],
+                    buttons: [
+                        'copy', 'csv' ,'excel', 'pdf'
+                    ]
+                } );
+
+            });
+
+        </script>
+    {% endblock %}
+
+{% block container %}
+
+
+
+    <div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12" >
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                        <li class="breadcrumb-item active">Claims</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">All Claims</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="card" >
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="heading">
+                    <h1 class="section-title">Latest Claim</h1>
+                    <h4 class="sub-title">You can show more details about your claims from here ! </h4>
+                    <br>
+                    <br>
+                </div>
+
+                <div class="container h-100">
+                    <div class="d-flex justify-content-center h-100" >
+                        <div class="searchbar">
+                            <input class="search_input" type="text" id="myInput" name="" placeholder="Search...">
+                            <a href="{{path('Search')}}" class="search_icon"><i class="fas fa-search"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            {% if is_granted('ROLE_MASTER') or is_granted('ROLE_ADMIN')  %}
+            <div class="col-lg-3">
+                <a href="{{ path('Add_Claim') }}" class="btn btn-lg font-16 btn-primary btn-block  " >
+                    Create New Claim <i class="mdi mdi-plus-circle-outline"></i>
+                </a>
+            </div> <!-- end col-->
+
+            {% endif %}
+        </div>  <!-- end row -->
+    </div>
+    <table class="table table-striped" style="width: 60%;
+    margin-left: auto;
+    margin-right: auto" id ="myTable">
+        <tr>
+
+            <th scope="col">Meeting</th>
+            <th scope="col">Availability</th>
+            <th scope="col">Other</th>
+            <th scope="col">Reason</th>
+            <th scope="col">Action</th>
+
+        </tr>
+{% for c in claim %}
+        <tr>
+            <th scope="row">{{ c.Meeting.titleMeeting }}</th>
+            <td>{{c.available}}</td>
+            <td>{{c.other}}</td>
+            <td>{{c.reason}}</td>
+<td>
+
+    <a href="{{path('Modify_Claim',{'id':c.id}) }}" class="action-icon"><i class="mdi mdi-square-edit-outline"></i></a>
+    <a href="{{path('Delete_Claim',{'id':c.id}) }}" class="action-icon"><i class="mdi mdi-delete"></i></a>
+    <a href="{{path('ShowDetail_Claim',{'id':c.id})}}" class="action-icon"><i class="mdi mdi-eye"></i></a>
+</td>
+        </tr>
+
+{% endfor %}
+    </table>
+
+
+{% endblock %}

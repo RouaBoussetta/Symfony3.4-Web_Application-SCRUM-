@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+    <h1>Planning creation</h1>
+<div class="col-lg-7">
+    <div class="card ">
+        <div class="card-body">
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-lg font-16 btn-success" type="submit" value="Create" />
+
+
+
+            <a href="{{ path('planning_index') }}" class="btn btn-lg font-16  btn-primary">Back to the list</a>
+
+            {{ form_end(form) }}
+
+</div>
+</div>
+</div>
+{% endblock %}

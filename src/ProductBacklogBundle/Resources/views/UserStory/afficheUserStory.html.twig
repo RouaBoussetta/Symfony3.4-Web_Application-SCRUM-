@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+{% block container %}
+
+    {% for message in app.flashes('successt') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('update') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+<h2>Listes des User Story</h2>
+
+<style>
+    .button {
+        background-color: #1c87c9;
+        border: none;
+        color: white;
+        padding: 20px 34px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+
+    {%  for us in us %}
+        <div class="table-responsive">
+            <table class="table table-centered table-nowrap table-hover mb-0">
+                <tbody>
+                <tr>
+                    <td>
+                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">User Story description: </a></h5>
+                        <span class="text-muted font-13">{{ us.userStoryDescription }}</span>
+                    </td>
+                    <td>
+                        <span class="text-muted font-13">Doing Progress:</span> <br/>
+                        {% block ssss %}
+
+
+                                {% if us.doing == 0  %}
+                                    <span  class="badge badge-danger-lighten"> Doing: {{ us.doing }} </span>
+
+                                {% endif %}
+
+                        {% endblock %}
+
+                        {% block sssss %}
+
+
+                            {% if us.doing > 0 and us.doing < us.totalEstimationUserstoryJours  %}
+                                <span  class="badge badge-warning-lighten"> Doing: {{ us.doing }} </span>
+
+                            {% endif %}
+
+                        {% endblock %}
+                        {% block ssssss %}
+
+
+                            {% if us.doing == us.totalEstimationUserstoryJours  %}
+                                <span  class="badge badge-success-lighten"> Doing: {{ us.doing }} </span>
+
+                            {% endif %}
+
+                        {% endblock %}
+
+                    </td>
+
+                    <td>
+                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">Priorite: </a></h5>
+                        {% if us.priority == 1  %}
+                        <span class="text-muted font-13"> Low </span>
+                        {% endif %}
+                        {% if us.priority == 2  %}
+                            <span class="text-muted font-13"> Meduim </span>
+                        {% endif %}
+                        {% if us.priority == 3  %}
+                            <span class="text-muted font-13"> High </span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">total Estimation User story Jours : </a></h5>
+                        <span class="text-muted font-13">{{ us.totalEstimationUserstoryJours }}</span>
+                    </td>
+
+
+
+                    <td class="table-action" style="width: 90px;">
+
+
+
+                       {% block ss %}
+                        {% if is_granted('ROLE_DEVELOPER') == true %}
+                              <a href="{{ path('updo',{'idus' :us.idUserStory}) }}"> <i class="mdi mdi-circle-edit-outline"></i></a>
+
+                          {% endif %}
+
+                       {% endblock %}
+
+
+
+                    </td>
+
+
+
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div> <!-- end table-responsive-->
+
+
+
+    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

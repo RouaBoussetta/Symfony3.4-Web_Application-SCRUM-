@@ -1,0 +1,93 @@
+project_homepage:
+    path:     /
+    defaults: { _controller: ProjectBundle:Default:index }
+
+
+rechercheIssueByStatus:
+    path:     /issue/
+    defaults: { _controller: ProjectBundle:Issue:rechercheIssueByStatus }
+
+rechercheIssueByType:
+    path:     /issue/
+    defaults: { _controller: ProjectBundle:Issue:rechercheIssueByType }
+
+rechercheIssueByPriority:
+    path:     /issue/
+    defaults: { _controller: ProjectBundle:Issue:rechercheIssueByPriority }
+
+
+rechercheProjectByCategory:
+    path:     /project/
+    defaults: { _controller: ProjectBundle:Project:rechercheProjectByCategory }
+
+
+
+rechercheReleasesByName:
+    path:     /releases/
+    defaults: { _controller: ProjectBundle:Releases:rechercheReleasesByName }
+
+
+project_display:
+    path:     /display
+    defaults: { _controller: ProjectBundle:Notification:display }
+
+statIssues:
+    path:     /statIssues
+    defaults: { _controller: ProjectBundle:Issue:statIssues }
+
+
+
+
+Project_Mobile:
+    path:     /projects
+    defaults: { _controller: ProjectBundle:Project:affichageMobile }
+
+AddProject:
+    path:     /AddProjectMobile/
+    defaults: { _controller: ProjectBundle:Project:AjouterMobile}
+
+DeleteProject:
+    path:     /DeleteProjectMobile/
+    defaults: { _controller: ProjectBundle:Project:SupprimerMobile}
+
+EditProject:
+    path:     /EditProjectMobile/
+    defaults: { _controller: ProjectBundle:Project:modifMobile}
+
+
+Issues_Mobile:
+    path:     /issues
+    defaults: { _controller: ProjectBundle:Issue:affichageMobile }
+
+AddIssue:
+    path:     /AddIssueMobile/
+    defaults: { _controller: ProjectBundle:Issue:AjouterMobile}
+
+DeleteIssue:
+    path:     /DeleteIssue/
+    defaults: { _controller: ProjectBundle:Issue:SupprimerMobile}
+EditIssues:
+    path:     /EditIssues/
+    defaults: { _controller: ProjectBundle:Issue:modifMobile}
+
+Releases_Mobile:
+    path:     /Releases
+    defaults: { _controller: ProjectBundle:Releases:affichageMobile }
+
+AddReleases:
+    path:     /AddReleasesMobile/
+    defaults: { _controller: ProjectBundle:Releases:AjouterMobile}
+
+DeleteReleases:
+    path:     /DeleteReleases/
+    defaults: { _controller: ProjectBundle:Releases:SupprimerMobile}
+
+EditReleases:
+    path:     /EditReleases/
+    defaults: { _controller: ProjectBundle:Releases:modifMobile}
+
+
+
+
+
+

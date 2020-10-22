@@ -1,0 +1,21 @@
+
+
+Master_home:
+    path:     /master
+    defaults: { _controller: UserBundle:Default:Master }
+
+Developer_home:
+    path:     /developer
+    defaults: { _controller: UserBundle:Default:Developer }
+
+ProductOwner_home:
+    path:     /productowner
+    defaults: { _controller: UserBundle:Default:ProductOwner }
+profile:
+    path:     /profile
+    defaults: { _controller: UserBundle:User:ShowProfile }
+
+
+DeveloperProfile:
+    path:     /profile/edit
+    defaults: { _controller: UserBundle:User:Edit }

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block container %}
+<h2>Listes des developpeur</h2>
+{%  for users in users %}
+
+
+        <div class="table-responsive">
+            <table class="table table-centered table-nowrap table-hover mb-0">
+                <tbody>
+                <tr>
+                    <td>
+                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body"> First Name: </a></h5>
+                        <span class="text-muted font-13">{{ users.name }}</span>
+                    </td>
+
+
+                    <td>
+                        <span class="text-muted font-13">Last Name :</span>
+                        <h5 class="font-14 mt-1 font-weight-normal">{{ users.lastname }}</h5>
+                    </td>
+                    <td class="table-action" style="width: 90px;">
+
+
+                        <a href="{{ path('affectUser',{'iduser' :users.id, 'idf' :idf} ) }}"> <i class=" uil-user-plus"></i></a>
+
+
+
+
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div> <!-- end table-responsive-->
+{% endfor %}
+{% endblock %}
+
+
+
+

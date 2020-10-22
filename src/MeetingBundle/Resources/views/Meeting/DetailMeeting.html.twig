@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block container %}
+
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Meetings</a></li>
+
+                        <li class="breadcrumb-item active">Meeting detail</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Meeting Details</h4>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="width: 56%;  margin-left: 300px">
+        <div class="card-body">
+            <h2 class="card-title" style="margin-left: 250px">{{ titleMeeting }}</h2>
+
+
+            <form>
+                <table  style="padding: 15px; margin-left: 90px">
+
+                    <tr style="padding: 10px">
+                        <th style="padding: 10px">Goal : </th>
+                        <td  style="padding: 10px">{{ goal }}</td>
+                    </tr>
+
+                    <tr style="padding: 15px" >
+                        <th style="padding: 15px">Issues : </th>
+                        <td  style="padding: 15px">{{ issues }}</td>
+                    </tr>
+                    <tr style="padding: 15px">
+                        <th style="padding: 15px">Project name : </th>
+                        <td  style="padding: 15px">{{ project.projecttitle }}</td>
+                    </tr>
+                    <tr style="padding: 15px">
+                        <th style="padding: 15px">Meeting type : </th>
+                        <td  style="padding: 15px">{{ type }}</td>
+                    </tr>
+
+                    <tr style="padding: 15px" >
+                        <th style="padding: 15px">Meeting date : </th>
+                        <td  style="padding: 15px">{{ date|date('Y-m-d') }}</td>
+                    </tr>
+
+                    <tr style="padding: 15px">
+                        <th style="padding: 15px">Members : </th>
+                        <td style="padding: 15px" >
+
+                            <ul >
+                                {% for u in users %}
+                                    <img src="{{ asset('Template/assets/images/users/' ~ u.userPhoto) }}" class="rounded-circle img-thumbnail avatar-sm" alt="friend"> {{ u.username }}
+
+                                {% endfor %}
+                            </ul>
+                        </td>
+
+                    </tr>
+                    <tr style="padding: 15px">
+                        <th style="padding: 15px">Meeting time : </th>
+                        <td  style="padding: 15px">{{ time|date('H:i:s') }}</td>
+                    </tr>
+                    <tr style="padding: 15px">
+                        <th style="padding: 15px">Duration : </th>
+                        <td  style="padding: 15px">{{ duration }}</td>
+                    </tr>
+
+                    <tr style="padding: 15px" >
+                        <th style="padding: 15px">Location : </th>
+                        <td style="padding: 15px" >{{ location }}</td>
+                    </tr>
+
+                    <tr style="padding: 15px" >
+                        <th style="padding: 15px">Organized By : </th>
+                        <td style="padding: 15px" >{{ organizedBy }}</td>
+                    </tr>
+                </table>
+
+            </form>
+            <br>
+            <a href="{{ path('meeting_calendar') }}" class="card-link"> < Back to calendar</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

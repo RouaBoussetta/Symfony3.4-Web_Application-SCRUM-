@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <!-- Datatables css -->
+    <link href="{{ asset('Template/assets/css/vendor/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-12 text-center" >
+            <div class="heading">
+                <h1 class="section-title">Daily Scrum Documents </h1>
+                <h4 class="sub-title">You can show more List of your Daily Scrum Documents from here !</h4>
+                <br>
+                <br>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-sm-4">
+                            {% if is_granted('ROLE_PRODUCT_OWNER') or is_granted('ROLE_MASTER') or is_granted('ROLE_ADMIN') %}
+                                <div class="text-sm-left">
+                                    <a href="{{ path('dailyscrum_new') }}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle mr-2"></i> Add Daily file</a>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="table-responsive">
+
+                                    {% block table %}
+                                    {% endblock %}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+

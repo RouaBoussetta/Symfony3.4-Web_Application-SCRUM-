@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Type</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idtype</th>
+                <td>{{ type.idType }}</td>
+            </tr>
+            <tr>
+                <th>Nomtype</th>
+                <td>{{ type.nomType }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('type_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('type_edit', { 'idType': type.idType }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

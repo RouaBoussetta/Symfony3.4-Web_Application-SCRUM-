@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+
+    <h1>Retrospective edit</h1>
+
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-body">
+            <table class="table mb-0">
+                <thead>
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+     <tr> <input class="btn btn-success" type="submit" value="Edit" /></tr>
+    {{ form_end(edit_form) }}
+
+
+            <tr><a href="{{ path('retrospective_index') }}" class="btn btn-primary" >Back to the list</a></tr>
+
+            {{ form_start(delete_form) }}
+               <tr><input class="btn btn-danger"  class="btn btn-danger" type="submit" value="Delete"></tr>
+            {{ form_end(delete_form) }}
+
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

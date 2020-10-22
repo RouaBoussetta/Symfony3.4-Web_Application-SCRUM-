@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+
+<div id="notification" style="width: 40%;
+    margin-left: auto;
+    margin-right: auto">
+{% for n in notification %}
+
+    <div style="max-height: 230px;">
+    <a href="" class="dropdown-item notify-item">
+        <div class="notify-icon bg-primary">
+            <i class="mdi mdi-comment-account-outline"></i>
+        </div>
+        <p class="notify-details"> {{ n.title }} about {{ n.description }}
+            <small class="text-muted" style="right: 50%">{{n.date|date}}</small>
+        </p>
+    </a>
+
+
+
+    {% else %}
+
+        <a href="" class="dropdown-item notify-item">
+            <div class="notify-icon bg-primary">
+                <i class="mdi mdi-comment-account-outline"></i>
+            </div>
+            <p class="notify-details">  no notifications
+                <small class="text-muted"></small>
+            </p>
+        </a>
+
+{% endfor %}
+</div>
+</div>
+{% endblock %}
+

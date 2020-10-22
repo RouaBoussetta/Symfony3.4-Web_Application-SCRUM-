@@ -1,0 +1,70 @@
+{{ form_start(form) }}
+<form method="POST" class="forms-sample ">
+
+
+    <div class="form-group" >
+        <label class="control-label">Title</label>
+        {{ form_widget(form.titleMeeting,{'attr': {'class': 'form-control'}})}}
+    </div>
+    <div class="form-group">
+        <label  class="control-label">Goal</label>
+
+        {{ form_widget(form.goal,{'attr': {'class': 'form-control'}})}}
+    </div>
+    <div class="form-group" >
+        <label  class="control-label">Issues</label>
+        {{ form_widget(form.issues,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+
+    <div class="form-group" >
+        <label class="control-label">Project </label>
+        {{ form_widget(form.project,{'attr': {'class': 'form-control'}})}}
+    </div>
+    <div class="form-group" >
+        <label  class="control-label">Type</label>
+        {{ form_widget(form.type,{'attr': {'class': 'form-control'}})}}
+    </div>
+    <div class="form-group" bis_skin_checked="1">
+        <label  class="control-label">Date </label>
+        {{ form_widget(form.date ,{'attr': {'class': 'form-control'}})}}
+
+    </div>
+    <div class="form-group" bis_skin_checked="1">
+        <label  class="control-label">Time </label>
+        {{ form_widget(form.time,{'attr': {'class': 'form-control'}})}}
+
+    </div>
+
+    <div class="form-group" bis_skin_checked="1">
+        <label  class="control-label">Participate </label>
+        {{ form_widget(form.users,{'attr': {'class': 'form-control'}})}}
+
+    </div>
+    <div class="form-group" bis_skin_checked="1">
+        <label  class="control-label"> Duration</label>
+
+        {{ form_widget(form.duration,{'attr': {'class': 'form-control'}})}}
+    </div>
+    <div class="form-group" bis_skin_checked="1">
+        <label  class="control-label"> Location</label>
+
+        {{ form_widget(form.location,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group" bis_skin_checked="1">
+        <label  class="control-label"> Captcha</label>
+
+        {{ form_widget(form.captcha,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+
+
+    <div class="text-right">
+        <button type="button" class="btn btn-light " data-dismiss="modal">Close</button>
+        {{ form_widget(form.save,{'attr': {'class': 'btn btn-primary'}})}}
+    </div>
+
+
+
+    {{ form_end(form) }}

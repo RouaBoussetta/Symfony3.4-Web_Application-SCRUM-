@@ -1,0 +1,54 @@
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+meeting:
+    resource: "@MeetingBundle/Resources/config/routing.yml"
+    prefix:   /
+
+product_backlog:
+    resource: "@ProductBacklogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+document:
+    resource: "@DocumentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+
+project:
+    resource: "@ProjectBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+
+project_issue:
+    resource: "@ProjectBundle/Controller/IssueController.php"
+    type:     annotation
+
+
+
+project_releases:
+    resource: "@ProjectBundle/Controller/ReleasesController.php"
+    type:     annotation
+
+
+project_project:
+    resource: "@ProjectBundle/Controller/ProjectController.php"
+    type:     annotation
+
+
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+ancarebeca_fullcalendar:
+    resource: "@FullCalendarBundle/Resources/config/routing.yml"
+
+loginMobile:
+    path:     /loginMobile/{username}/{password}
+    defaults: { _controller: UserBundle:User:loginMobile }

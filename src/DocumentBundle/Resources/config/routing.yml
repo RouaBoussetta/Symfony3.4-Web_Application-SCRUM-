@@ -1,0 +1,173 @@
+dailyscrum_index:
+  path:     /
+  defaults: { _controller: "DocumentBundle:Dailyscrum:index" }
+  methods:  GET
+
+dailyscrum_show:
+  path:     /{idDaily}/show
+  defaults: { _controller: "DocumentBundle:Dailyscrum:show" }
+  methods:  GET
+
+dailyscrum_new:
+  path:     /new
+  defaults: { _controller: "DocumentBundle:Dailyscrum:new" }
+  methods:  [GET, POST]
+
+dailyscrum_edit:
+  path:     /{idDaily}/edit
+  defaults: { _controller: "DocumentBundle:Dailyscrum:edit" }
+  methods:  [GET, POST]
+
+dailyscrum_delete:
+  path:     /{idDaily}/delete
+  defaults: { _controller: "DocumentBundle:Dailyscrum:delete" }
+  methods:  DELETE
+
+planning_index:
+  path:     /
+  defaults: { _controller: "DocumentBundle:Planning:index" }
+  methods:  GET
+
+planning_show:
+  path:     /{idPlan}/show
+  defaults: { _controller: "DocumentBundle:Planning:show" }
+  methods:  GET
+
+planning_new:
+  path:     /new
+  defaults: { _controller: "DocumentBundle:Planning:new" }
+  methods:  [GET, POST]
+
+planning_edit:
+  path:     /{idPlan}/edit
+  defaults: { _controller: "DocumentBundle:Planning:edit" }
+  methods:  [GET, POST]
+
+planning_delete:
+  path:     /{idPlan}/delete
+  defaults: { _controller: "DocumentBundle:Planning:delete" }
+  methods:  DELETE
+
+retrospective_index:
+  path:     /
+  defaults: { _controller: "DocumentBundle:Retrospective:index" }
+  methods:  GET
+
+retrospective_show:
+  path:     /{idRetro}/show
+  defaults: { _controller: "DocumentBundle:Retrospective:show" }
+  methods:  GET
+
+retrospective_new:
+  path:     /new
+  defaults: { _controller: "DocumentBundle:Retrospective:new" }
+  methods:  [GET, POST]
+
+retrospective_edit:
+  path:     /{idRetro}/edit
+  defaults: { _controller: "DocumentBundle:Retrospective:edit" }
+  methods:  [GET, POST]
+
+retrospective_delete:
+  path:     /{idRetro}/delete
+  defaults: { _controller: "DocumentBundle:Retrospective:delete" }
+  methods:  DELETE
+
+sprintreview_index:
+  path:     /
+  defaults: { _controller: "DocumentBundle:Sprintreview:index" }
+  methods:  GET
+
+sprintreview_show:
+  path:     /{idReview}/show
+  defaults: { _controller: "DocumentBundle:Sprintreview:show" }
+  methods:  GET
+
+sprintreview_new:
+  path:     /new
+  defaults: { _controller: "DocumentBundle:Sprintreview:new" }
+  methods:  [GET, POST]
+
+sprintreview_edit:
+  path:     /{idReview}/edit
+  defaults: { _controller: "DocumentBundle:Sprintreview:edit" }
+  methods:  [GET, POST]
+
+sprintreview_delete:
+  path:     /{idReview}/delete
+  defaults: { _controller: "DocumentBundle:Sprintreview:delete" }
+  methods:  DELETE
+
+type_index:
+  path:     /
+  defaults: { _controller: "DocumentBundle:Type:index" }
+  methods:  GET
+
+type_show:
+  path:     /{idType}/show
+  defaults: { _controller: "DocumentBundle:Type:show" }
+  methods:  GET
+
+type_new:
+  path:     /new
+  defaults: { _controller: "DocumentBundle:Type:new" }
+  methods:  [GET, POST]
+
+type_edit:
+  path:     /{idType}/edit
+  defaults: { _controller: "DocumentBundle:Type:edit" }
+  methods:  [GET, POST]
+
+type_delete:
+  path:     /{idType}/delete
+  defaults: { _controller: "DocumentBundle:Type:delete" }
+  methods:  DELETE
+
+document_dailyscrum:
+  path:     /dailyscrum
+  defaults: { _controller:  DocumentBundle:Dailyscrum:index }
+
+dailyscrum_list:
+  path:     /dailyscrumlist
+  defaults: { _controller:  DocumentBundle:Dailyscrum:list }
+
+document_planning:
+  path:     /planning
+  defaults: { _controller:  DocumentBundle:Planning:index }
+
+document_sprintreview:
+  path:     /sprintreview
+  defaults: { _controller:  DocumentBundle:Sprintreview:index }
+
+document_retrospective:
+  path:     /retrospective
+  defaults: { _controller:  DocumentBundle:Retrospective:index }
+
+daily_Delete:
+  path:     /DeleteDaily
+  defaults: { _controller:  DocumentBundle:Dailyscrum:DeleteDaily }
+Plan_Delete:
+  path:     /DeletePlan
+  defaults: { _controller:  DocumentBundle:Planning:DeletePlan }
+Retro_Delete:
+  path:     /DeleteRetro
+  defaults: { _controller: DocumentBundle:Retrospective:DeleteRetro }
+Rev_Delete:
+  path:     /DeleteRev
+  defaults: { _controller:  DocumentBundle:Sprintreview:DeleteRev }
+
+DailyMobile_List:
+  path:     /dailyscrums
+  defaults:  { _controller:  DocumentBundle:Dailyscrum:ListDailyMobile }
+
+DailyMobile_Delete:
+  path:     /deleteDailyMob/
+  defaults: { _controller:  DocumentBundle:Dailyscrum:DeleteMobile }
+
+DailyMobile_Edit:
+  path:     /EditDailyMobile/
+  defaults:  { _controller:  DocumentBundle:Dailyscrum:EditDailyMobile }
+
+DailyMobile_Add:
+  path:     /AddDailyMobile/
+  defaults:  { _controller:  DocumentBundle:Dailyscrum:AddDailyMobile }

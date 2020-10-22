@@ -1,0 +1,51 @@
+{{ form_start(form) }}
+<form method="POST" class="forms-sample ">
+
+    <div class="form-group" >
+        <label  class="control-label">Project Title</label>
+        {{ form_widget(form.projectTitle,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+
+    <div class="form-group" >
+        <label class="control-label">Description </label>
+        {{ form_widget(form.description,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label">Deadline </label>
+        {{ form_widget(form.deadLine,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label">Category </label>
+        {{ form_widget(form.category,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label">Version </label>
+        {{ form_widget(form.version,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label">Start Date </label>
+        {{ form_widget(form.date_creation,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label">Creation Time </label>
+        {{ form_widget(form.time_creation,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Captcha </label>
+        {{ form_widget(form.captcha,{'attr': {'class': 'form-control'}})}}
+    </div>
+
+    <div class="text-right">
+        <button type="button" class="btn btn-light " data-dismiss="modal">Close</button>
+        {{ form_widget(form.save,{'attr': {'class': 'btn btn-primary'}})}}
+    </div>
+
+
+    {{ form_end(form) }}

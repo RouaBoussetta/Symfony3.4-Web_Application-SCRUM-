@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('Template/assets/css/vendor/fullcalendar.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- third party css end -->
+
+
+
+{% endblock %}
+
+
+
+   {% block container %}
+
+
+
+       <div class="container-fluid">
+
+           <!-- start page title -->
+           <div class="row">
+               <div class="col-12">
+                   <div class="page-title-box">
+                       <div class="page-title-right">
+                           <ol class="breadcrumb m-0">
+                               <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                               <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                               <li class="breadcrumb-item active">Calendar</li>
+                           </ol>
+                       </div>
+                       <h4 class="page-title">Calendar</h4>
+                   </div>
+               </div>
+           </div>
+           <!-- end page title -->
+
+           <div class="row">
+               <div class="col-12">
+
+                   <div class="card">
+                       <div class="card-body">
+                           <div class="row">
+                               {% if is_granted('ROLE_MASTER') %}
+
+                                           <div class="col-lg-3">
+                                                           <a href="{{ path('meeting_Add') }}" class="btn btn-lg font-16 btn-primary btn-block  " >
+                                                               Create New Meeting <i class="mdi mdi-plus-circle-outline"></i>
+                                                           </a><br>
+                                               <a href="{{ path('meeting_listmeetings') }}" class="btn btn-lg font-16 btn btn-light   ">
+                                                   Latest Meetings
+                                               </a>
+
+                                           </div> <!-- end col-->
+                               {% elseif is_granted('ROLE_DEVELOPER') %}
+
+
+                                   <div class="col-lg-3">
+
+                                       <a href="{{ path('meeting_listmeetings') }}" class="btn btn-lg font-16 btn btn-light   ">
+                                           Latest Meetings
+                                       </a>
+
+                                   </div> <!-- end col-->
+                               {% elseif is_granted('ROLE_PRODUCT_OWNER') %}
+                                   <div class="col-lg-3">
+                                       <a href="{{ path('meeting_Add') }}" class="btn btn-lg font-16 btn-primary btn-block  " >
+                                           Create New Meeting <i class="mdi mdi-plus-circle-outline"></i>
+                                       </a><br>
+                                       <a href="{{ path('meeting_listmeetings') }}" class="btn btn-lg font-16 btn btn-light   ">
+                                           Latest Meetings
+                                       </a>
+
+                                   </div> <!-- end col-->
+                               {% else%}
+                                   <div class="col-lg-3">
+                                       <a href="{{ path('meeting_Add') }}" class="btn btn-lg font-16 btn-primary btn-block  " >
+                                           Create New Meeting <i class="mdi mdi-plus-circle-outline"></i>
+                                       </a><br>
+                                       <a href="{{ path('meeting_listmeetings') }}" class="btn btn-lg font-16 btn btn-light   ">
+                                           Latest Meetings
+                                       </a>
+
+                                   </div> <!-- end col-->
+
+                               {% endif %}
+
+                               <div class="col-lg-9">
+                                   <div id="calendar-holder">
+
+                                   </div>
+                               </div> <!-- end col -->
+
+                           </div>  <!-- end row -->
+                       </div> <!-- end card body-->
+                   </div> <!-- end card -->
+
+                   <!-- Add New Event MODAL -->
+
+                   <!-- end modal-->
+
+                   <!-- Modal Add Category -->
+
+                   <!-- end modal-->
+               </div>
+               <!-- end col-12 -->
+           </div> <!-- end row -->
+
+       </div> <!-- container -->
+
+   {% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('Template/assets/js/vendor.min.js') }}"></script>
+    <script src="{{ asset('Template/assets/js/app.min.js') }}"></script>
+
+    <!-- third party js -->
+    <script src="{{ asset('Template/assets/js/vendor/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('Template/assets/js/vendor/fullcalendar.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
+    <script>
+
+        $(document).ready(function() {
+
+            $('#calendar-holder').fullCalendar({
+                header: {
+                    left: 'prev, today',
+                    center: 'title',
+                    right: 'month, basicWeek, basicDay,'
+                },
+                defaultDate: '{{ 'now'|date('Y-m-d') }}',
+
+                events: [
+                    {
+                        url: ' MeetingBundle/Meeting/LoadEvCalendar',
+                        type: 'POST',
+                        data: {},
+                    }
+                ]
+
+            });
+            $('#calendar-holder').fullCalendar('addEventSource',{{ render(controller("MeetingBundle:Meeting:LoadEvCalendar")) }})
+
+        });
+    </script>
+
+{% endblock %}
+
+
+
+
+        {##}
+
+

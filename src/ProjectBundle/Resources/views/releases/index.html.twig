@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+    {% block javascripts %}
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('#myInput').keyup(function(){
+                    search_table($(this).val());
+                });
+                function search_table(value){
+                    $('#myTable tr').each(function(){
+                        var found = 'false';
+                        $(this).each(function(){
+                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                            {
+                                found = 'true';
+                            }
+                        });
+                        if(found == 'true')
+                        {
+                            $(this).show();
+                        }
+                        else
+                        {
+                            $(this).hide();
+                        }
+                    });
+                }
+            });
+        </script>
+    {% endblock %}
+
+{% block container %}
+
+
+
+    <div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12" >
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                        <li class="breadcrumb-item active">Projects</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">All Issues</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="card" >
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="heading">
+                    <h1 class="section-title">Latest Releases</h1>
+                    <h4 class="sub-title">You can show more details ,edit or delete your Releases from here ! </h4>
+                    <br>
+                    <br>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="container h-100">
+                    <div class="d-flex justify-content-center h-100" >
+
+                        <div class="searchbar">
+                            <input class="search_input" type="text" id="myInput" name="" placeholder="Search...">
+                            <a href="{{path('Search')}}" class="search_icon"><i class="fas fa-search"></i></a>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+                <br>
+            </div>
+
+        </div>  <!-- end row -->
+    </div>
+    <table class="table table-striped" style="width: 60%;
+    margin-left: auto;
+    margin-right: auto" id ="myTable">
+        <tr>
+
+            <th scope="col">Name</th>
+            <th scope="col">description</th>
+            <th scope="col">Startdate</th>
+            <th scope="col">Releasedate</th>
+            <th scope="col">Actions</th>
+
+
+
+        </tr>
+        {% for release in releases %}
+            <tr>
+
+                <td>{{ release.name }}</td>
+                <td>{{ release.description }}</td>
+                <td>{{ release.startDate }}</td>
+                <td>{{ release.releaseDate }}</td>
+                <td>
+                    <ul>
+                        <li>
+
+                            <a href="{{ path('releases_show', { 'id': release.id }) }}" class="action-icon"><i class="mdi mdi-square-edit-outline"></i>show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('releases_edit', { 'id': release.id }) }}" class="action-icon"><i class="mdi mdi-square-edit-outline"></i>edit</a>
+                        </li>
+
+
+                    </ul>
+
+
+
+
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+    <li>
+        <li>search Releases By Name </li>
+        <form method="POST">
+            <input type="text" name="name"  >
+            <input type="submit" value="search"  >
+
+        </form>
+    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

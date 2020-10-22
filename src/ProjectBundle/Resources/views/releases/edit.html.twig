@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+    {% block javascripts %}
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('#myInput').keyup(function(){
+                    search_table($(this).val());
+                });
+                function search_table(value){
+                    $('#myTable tr').each(function(){
+                        var found = 'false';
+                        $(this).each(function(){
+                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                            {
+                                found = 'true';
+                            }
+                        });
+                        if(found == 'true')
+                        {
+                            $(this).show();
+                        }
+                        else
+                        {
+                            $(this).hide();
+                        }
+                    });
+                }
+            });
+        </script>
+    {% endblock %}
+
+{% block container %}
+
+
+
+    <div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12" >
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                        <li class="breadcrumb-item active">Projects</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">All Releases</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="card" >
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="heading">
+                    <h1 class="section-title">Latest Releases</h1>
+                    <h4 class="sub-title"> here is it ! Edit your release </h4>
+                    <br>
+                    <br>
+                </div>
+
+                <br>
+            </div>
+
+        </div>  <!-- end row -->
+    </div>
+
+    <h1>Project edit</h1>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('releases_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+    {% block javascripts %}
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('#myInput').keyup(function(){
+                    search_table($(this).val());
+                });
+                function search_table(value){
+                    $('#myTable tr').each(function(){
+                        var found = 'false';
+                        $(this).each(function(){
+                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                            {
+                                found = 'true';
+                            }
+                        });
+                        if(found == 'true')
+                        {
+                            $(this).show();
+                        }
+                        else
+                        {
+                            $(this).hide();
+                        }
+                    });
+                }
+            });
+        </script>
+    {% endblock %}
+
+{% block container %}
+
+
+
+    <div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12" >
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                        <li class="breadcrumb-item active">Projects</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">All Projects</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="card" >
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="heading">
+                    <h1 class="section-title">Latest Project</h1>
+                    <h4 class="sub-title">You can show more details about your projects from here ! </h4>
+                    <br>
+                    <br>
+                </div>
+
+                <br>
+            </div>
+
+        </div>  <!-- end row -->
+    </div>
+
+    <h1>Releases</h1>
+    <table class="table table-striped" style="width: 60%;
+    margin-left: auto;
+    margin-right: auto" id ="myTable">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ release.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ release.name }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ release.description }}</td>
+        </tr>
+
+        <tr>
+            <th>Startdate</th>
+            <td>{{ release.startDate }}</td>
+        </tr>
+        <tr>
+            <th>Releasedate</th>
+            <td>{{ release.releaseDate }}</td>
+        </tr>
+        <tr>
+
+
+
+
+        </tbody>
+    </table>
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('releases_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('releases_edit', { 'id': release.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+
+
+
+
+{% endblock %}

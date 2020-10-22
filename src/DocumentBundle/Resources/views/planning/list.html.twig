@@ -1,0 +1,64 @@
+{% extends 'planning/index.html.twig' %}
+
+{% block table %}
+    <table id="my_table" class="table table-centered dt-responsive nowrap w-100">
+        <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>File Name</th>
+            <th>Modify Date</th>
+            <th>Modify Time</th>
+            <th>Created By</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for planning in plannings %}
+            <tr>
+                <td><a href="{{ path('planning_show', { 'idPlan': planning.idPlan }) }}">{{ planning.idPlan }}</a></td>
+                <td>{{ planning.title }}</td>
+                <td>{% if planning.dateModification %}{{ planning.dateModification|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if planning.timeModification %}{{ planning.timeModification|date('H:i:s') }}{% endif %}</td>
+                <td>{{ planning.user }}</td>
+                <td>
+                    {% if is_granted('ROLE_DEVELOPER') or is_granted('ROLE_PRODUCT_OWNER') or is_granted('ROLE_MASTER') or is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('planning_show', { 'idPlan': planning.idPlan }) }}" class="action-icon"><i class="mdi mdi-eye"></i></a>
+                    {% endif %}
+                    {% if is_granted('ROLE_PRODUCT_OWNER') or is_granted('ROLE_MASTER') or is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('planning_edit', { 'idPlan': planning.idPlan }) }}" class="action-icon"><i class="mdi mdi-square-edit-outline"></i></a>
+                    {% endif %}
+                    {% if is_granted('ROLE_PRODUCT_OWNER') or  is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('Plan_Delete', { 'idPlan': planning.idPlan}) }}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    {% endif %}
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        $(document).ready(function () {
+            $('#my_table').DataTable({
+                dom: "<'row'<'col-sm-12'B>>" +
+                    "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                lengthMenu: [
+                    [ 5, 10, 20, -1 ],
+                    [ '5 rows', '10 rows', '20 rows', 'Show all' ]],
+                buttons: [
+                    'copy', 'csv' ,'excel', 'pdf'
+                ]
+            } );
+
+        });
+
+    </script>
+
+{% endblock %}

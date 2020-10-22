@@ -1,0 +1,178 @@
+meeting_homepage:
+    path:     /
+    defaults: { _controller: MeetingBundle:Default:index }
+
+
+
+meeting_Add:
+    path:     /addmeeting
+    defaults: { _controller: MeetingBundle:Meeting:AddMeeting }
+
+
+
+meeting_Modify:
+    path:     /modifymeeting/{id}
+    defaults: { _controller: MeetingBundle:Meeting:ModifyMeeting }
+
+meeting_calendar:
+    path:     /calendar
+    defaults: { _controller: MeetingBundle:Meeting:calendar }
+
+
+meeting_listmeetings:
+    path:     /listmeetings
+    defaults: { _controller: MeetingBundle:Meeting:ListMeetings }
+daily_meeting:
+    path:     /dailymeetings
+    defaults: { _controller: MeetingBundle:Meeting:DisplayDaily }
+retro_meeting:
+    path:     /retromeetings
+    defaults: { _controller: MeetingBundle:Meeting:DisplayRetro }
+sprint_meeting:
+    path:     /sprintmeetings
+    defaults: { _controller: MeetingBundle:Meeting:DisplaySprint }
+review_meeting:
+    path:     /reviewmeetings
+    defaults: { _controller: MeetingBundle:Meeting:DisplayReview }
+
+
+meeting_detail:
+    path:     /detail/{id}
+    defaults: { _controller: MeetingBundle:Meeting:ShowMeetingDetail }
+
+delete_meeting:
+    path:     /deletemeeting/{id}
+    defaults: { _controller: MeetingBundle:Meeting:deleteMeeting }
+
+
+ajax_search:
+    path:     /search
+    defaults: { _controller: MeetingBundle:Meeting:search }
+
+Sort_meeting_DESC:
+    path:     /desc
+    defaults: { _controller: MeetingBundle:Meeting:SortMeetingDESC }
+
+Sort_meeting_ASC:
+    path:     /asc
+    defaults: { _controller: MeetingBundle:Meeting:SortMeetingASC }
+
+Add_Claim:
+    path:     /addclaim
+    defaults: { _controller: MeetingBundle:ClaimMeeting:AddClaimMeeting }
+
+
+Show_Claim:
+    path:     /showclaim
+    defaults: { _controller: MeetingBundle:ClaimMeeting:ShowClaim }
+
+ShowDetail_Claim:
+    path:     /detailclaim/{id}
+    defaults: { _controller: MeetingBundle:ClaimMeeting:ShowDetail }
+
+Delete_Claim:
+    path:     /deleteclaim/{id}
+    defaults: { _controller: MeetingBundle:ClaimMeeting:DeleteClaim }
+
+Modify_Claim:
+    path:     /modifyclaim/{id}
+    defaults: { _controller: MeetingBundle:ClaimMeeting:ModifyClaim }
+
+CountAdmin_Claim:
+    path:     /countclaim
+    defaults: { _controller: MeetingBundle:ClaimMeeting:CountClaim }
+
+Count_Claim:
+    path:     /showclaim
+    defaults: { _controller: MeetingBundle:ClaimMeeting:CountClaimSession }
+
+
+
+statmeeting:
+    path:     /stat
+    defaults: { _controller: MeetingBundle:Meeting:chart }
+
+DashAdmin:
+    path:     /AdminDashboard
+    defaults: { _controller: MeetingBundle:Meeting:Adminchart }
+
+Refine_meeting:
+    path:     /refine
+    defaults: { _controller: MeetingBundle:Meeting:RefineMeeting }
+
+
+notification:
+    path:     /notification
+    defaults: { _controller: AppBundle:Notification:DisplayNotification }
+
+ClearAll_notification:
+    path:     /notification/clearAll
+    defaults: { _controller: MeetingBundle:Notification:ClearAll }
+DownloadClaim:
+    path:     /downloading
+    defaults: { _controller: MeetingBundle:ClaimMeeting:downloadClaim }
+
+
+ListMeeting_Mobile:
+    path:     /meetings
+    defaults: { _controller: MeetingBundle:Meeting:ListMeetingMobile }
+
+
+
+addMeeting_Mobile:
+    path:     /AddMeetingMobile/
+    defaults: { _controller: MeetingBundle:Meeting:AddMeetingMobile }
+
+
+deleteMeetingMobile:
+    path:     /deleteMeetingMobile/
+    defaults: { _controller: MeetingBundle:Meeting:deleteMeetingMobile }
+
+EditMeetingMobile:
+    path:     /EditMeetingMobile/
+    defaults: { _controller: MeetingBundle:Meeting:EditMeetingMobile }
+
+
+AddClaim_Mobile:
+    path:     /AddClaimMobile/
+    defaults: { _controller: MeetingBundle:ClaimMeeting:AddClaimMobile }
+
+ListClaim_Mobile:
+    path:     /Claims
+    defaults: { _controller: MeetingBundle:ClaimMeeting:ListClaimMobile }
+
+
+deleteClaimMobile:
+    path:     /DeleteClaimMobile/
+    defaults: { _controller: MeetingBundle:ClaimMeeting:deleteClaimMobile }
+
+EditClaimMobile:
+    path:     /EditClaimMobile/
+    defaults: { _controller: MeetingBundle:ClaimMeeting:EditClaimMobile }
+
+
+ListProject_Mobile:
+    path:     /projects
+    defaults: { _controller: MeetingBundle:Meeting:ListProjectMobile }
+
+Search:
+    path:     /find/
+    defaults: { _controller: MeetingBundle:Meeting:searchStatic }
+
+ListUser_Mobile:
+    path:     /users
+    defaults: { _controller: MeetingBundle:Meeting:ListUserMobile }
+
+ListMember_Mobile:
+    path:     /member
+    defaults: { _controller: MeetingBundle:Meeting:ListMemberMobile }
+
+count_Mobile:
+    path:     /totalmeeting
+    defaults: { _controller: MeetingBundle:Meeting:countMeetingMobile }
+
+RefineMobile_meeting:
+    path:     /refinee
+    defaults: { _controller: MeetingBundle:Meeting:RefineMeetingMobile }
+
+

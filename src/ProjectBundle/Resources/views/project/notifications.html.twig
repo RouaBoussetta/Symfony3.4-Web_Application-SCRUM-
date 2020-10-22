@@ -1,0 +1,14 @@
+<div style="...">
+ <h5> Notifications </h5>
+    <ul id="notifications">
+        {% for notif in notifications %}
+        <li>
+            {{ notif.title }}
+            {{ notif.description }}
+
+        </li>
+        {%  else  %}
+        <li>List is empty</li>
+        {%  endfor %}
+    </ul>
+</div>

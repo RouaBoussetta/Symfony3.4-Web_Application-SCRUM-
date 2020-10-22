@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+
+    <h1>Planning</h1>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+
+
+    <table id="my_table" class="table table-centered table-borderless mb-0">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ planning.idPlan }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ planning.title }}</td>
+            </tr>
+            <tr>
+                <th>Analyse </th>
+                <td>{{ planning.analyse }}</td>
+            </tr>
+            <tr>
+                <th>Evaluate process</th>
+                <td>{{ planning.evaluate }}</td>
+            </tr>
+            <tr>
+                <th>Project</th>
+                <td>{{ planning.product }}</td>
+            </tr>
+            <tr>
+                <th>Sprint Goals</th>
+                <td>{{ planning.sprintgoal }}</td>
+            </tr>
+            <tr>
+                <th>Tasks list</th>
+                <td>{{ planning.tasks }}</td>
+            </tr>
+            <tr>
+                <th>Creation Date</th>
+                <td>{% if planning.dateCreation %}{{ planning.dateCreation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Creation Time</th>
+                <td>{% if planning.timeCreation %}{{ planning.timeCreation|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modify Date</th>
+                <td>{% if planning.dateModification %}{{ planning.dateModification|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modify TIME</th>
+                <td>{% if planning.timeModification %}{{ planning.timeModification|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Created By</th>
+                <td>{{ planning.user }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table mb-0">
+        <thead>
+           <tr><a href="{{ path('planning_index') }}" class="btn btn-primary">Back to the list</a></tr>
+
+            <t><a class="btn btn-success" href="{{ path('planning_edit', { 'idPlan': planning.idPlan }) }}">Edit</a></t>
+
+            {{ form_start(delete_form) }}
+              <tr><input  class="btn btn-danger" type="submit" value="Delete"></tr>
+            {{ form_end(delete_form) }}
+
+        </thead>
+    </table>
+            </div>
+        </div>
+    </div>
+<div class="col-sm-8">
+
+</div>
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

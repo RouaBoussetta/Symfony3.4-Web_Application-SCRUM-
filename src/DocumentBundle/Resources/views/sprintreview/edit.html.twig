@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+    <h1>Sprintreview edit</h1>
+
+    <table class="table mb-0">
+        <thead>
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+      <tr><input type="submit" class="btn btn-success" value="Save" /></tr>
+    {{ form_end(edit_form) }}
+
+
+           <tr><a href="{{ path('sprintreview_index') }}" class="btn btn-primary">Back to the list</a></tr>
+
+
+        </thead>
+    </table>
+
+
+{% endblock %}

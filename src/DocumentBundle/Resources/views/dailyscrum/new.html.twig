@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+    <h1>Dailyscrum creation</h1>
+<div class="col-lg-7">
+    <div class="card">
+        <div class="card-body">
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+             <input class="btn btn-lg font-16 btn btn-success" type="submit" value="Create" />
+
+
+            <a class="btn btn-lg font-16 btn-primary" href="{{ path('dailyscrum_index') }}">Back to the list</a>
+     {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

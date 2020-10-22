@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+
+{% block container %}
+
+    <div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                        <li class="breadcrumb-item active">Claims</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Edit profile</h4>
+            </div>
+        </div>
+    </div>
+
+
+
+        <div class="card text-left" style="width: 60%;margin-left: 300px">
+            <div class="card-body">
+                {{ form_start(form) }}
+                <form method="POST" class="forms-sample " >
+                    <div class="form-group" style="width: 60%">
+                        <label class="control-label">Name</label>
+                        {{ form_widget(form.name,{'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <div class="form-group" style="width: 60%">
+                        <label  class="control-label">lastname</label>
+
+                        {{ form_widget(form.lastname,{'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <div class="form-group" style="width: 60%">
+                        <label  class="control-label">userPhone</label>
+                        {{ form_widget(form.userPhone,{'attr': {'class': 'form-control'}})}}
+                    </div>
+
+
+                    <div class="form-group" style="width: 60%">
+                        <label class="control-label">userAddress </label>
+                        {{ form_widget(form.userAddress,{'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <div class="form-group" style="width: 60%">
+                        <label class="control-label">Email</label>
+                        {{ form_widget(form.email,{'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <div class="form-group" style="width: 60%">
+                        <label  class="control-label">Username</label>
+
+                        {{ form_widget(form.username,{'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <div class="form-group" style="width: 60%">
+                        <label  class="control-label">Password</label>
+                        {{ form_widget(form.plainPassword.first,{'attr': {'class': 'form-control'}})}}
+                    </div>
+
+
+                    <div class="form-group" style="width: 60%">
+                        <label class="control-label">Repeat password </label>
+                        {{ form_widget(form.plainPassword.second,{'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <div class="form-group" style="width: 60%">
+                        <label  class="control-label">userPhoto</label>
+                        {{ form_widget(form.userPhoto,{'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <div class="form-group" bis_skin_checked="1" style="width: 60%">
+                        <label  class="control-label">userCin </label>
+                        {{ form_widget(form.userCin,{'attr': {'class': 'form-control'}})}}
+
+                    </div>
+                    <div class="form-group" bis_skin_checked="1" style="width: 60%">
+                        <label  class="control-label">userDayBirth </label>
+                        {{ form_widget(form.userDayBirth,{'attr': {'class': 'form-control'}})}}
+
+                    </div>
+                    <div class="form-group" style="width: 60%">
+                        <label class="control-label">nationality </label>
+                        {{ form_widget(form.nationality,{'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <div class="form-group" style="width: 60%">
+                        <label  class="control-label">speciality</label>
+                        {{ form_widget(form.speciality,{'attr': {'class': 'form-control'}})}}
+                    </div>
+                    <div class="form-group" bis_skin_checked="1" style="width: 60%">
+                        <label  class="control-label">bio </label>
+                        {{ form_widget(form.bio,{'attr': {'class': 'form-control'}})}}
+
+                    </div>
+                    <div class="form-group" bis_skin_checked="1" style="width: 60%">
+                        <label  class="control-label">roles </label>
+                        {{ form_widget(form.roles,{'attr': {'class': 'form-control'}})}}
+
+                    </div>
+
+
+
+
+                    <div class="text-right">
+                        <button type="button" class="btn btn-light " data-dismiss="modal">Close</button>
+                        <input class="btn btn-primary" style="background: #4695de" type="submit" value="{{ 'registration.submit'|trans }}"/>
+                    </div>
+
+
+
+                    {{ form_end(form) }}
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

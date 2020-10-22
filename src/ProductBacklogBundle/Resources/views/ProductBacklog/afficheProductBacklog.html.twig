@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block container %}
+<h2>Listes des Product Backlogs</h2>
+
+
+    {%  for pb in ProductBacklog %}
+
+    <ul>
+
+        <li>Nom du product backlog: {{ pb.ProductBacklog }}</li>
+
+
+
+        {% block ss %}
+            {% if is_granted('ROLE_MASTER') == true %}
+
+                <li> <td><a href="{{ path('ThemeajoutTheme',{'idBacklog' :pb.idBacklog}) }}"> ajouts un  theme </a></td> </li>
+
+            {% endif %}
+        {% endblock %}
+        <li>  <td> <a  href="{{ path('ThemeafficheTheme',{'idBacklog' :pb.idBacklog}) }}"> Affiche les themes </a></td> </li>
+
+
+        </ul>
+{% endfor %}
+
+{% endblock %}
+
+

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+
+    <h1>Retrospective</h1>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+    <table class="table table-centered table-borderless mb-0">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ retrospective.idRetro }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ retrospective.title }}</td>
+            </tr>
+            <tr>
+                <th>Start Doing</th>
+                <td>{{ retrospective.startdoing }}</td>
+            </tr>
+            <tr>
+                <th>Stop Doing</th>
+                <td>{{ retrospective.stopdoing }}</td>
+            </tr>
+            <tr>
+                <th>Continue Doing</th>
+                <td>{{ retrospective.continuedoing }}</td>
+            </tr>
+            <tr>
+                <th>Creation Date </th>
+                <td>{% if retrospective.dateCreation %}{{ retrospective.dateCreation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Creation Time</th>
+                <td>{% if retrospective.timeCreation %}{{ retrospective.timeCreation|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modify Date</th>
+                <td>{% if retrospective.dateModification %}{{ retrospective.dateModification|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modify Time</th>
+                <td>{% if retrospective.timeModification %}{{ retrospective.timeModification|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Created By</th>
+                <td>{{ retrospective.user }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+            <a href="{{ path('retrospective_index') }}" class="btn btn-primary">Back to the list</a>
+
+            <a href="{{ path('retrospective_edit', { 'idRetro': retrospective.idRetro }) }}" class="btn btn-success" >Edit</a>
+
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Delete">
+            {{ form_end(delete_form) }}
+
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

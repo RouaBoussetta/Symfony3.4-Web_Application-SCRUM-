@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block container %}
+
+
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Titan</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Claims</a></li>
+
+                            <li class="breadcrumb-item active">New Meeting Claim</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">New Meeting Claim</h4>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card" style="width: 56%;  margin-left: 300px">
+
+            <div class="col-md-11 swMain">
+                <div class="row">
+                    <div  class="col-md-12">
+                        <fieldset style="margin-left: 40px">
+                            <legend>
+                                <h2 class="section-title" style="margin-left: 200px">Create New Claim</h2>
+
+
+                            </legend>
+                            {{ include('@Meeting/Claim/formCM.html.twig') }}
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

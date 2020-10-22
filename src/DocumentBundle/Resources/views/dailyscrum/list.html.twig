@@ -1,0 +1,57 @@
+{% extends 'dailyscrum/index.html.twig' %}
+{% block table %}
+
+    <table id="my_table" class="table table-centered dt-responsive nowrap w-100">
+    <thead class="thead-light">
+    <tr>
+        <th>ID</th>
+        <th>File Name</th>
+        <th>Modify Date</th>
+        <th>Modify Time</th>
+        <th>Created By</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for dailyscrum in dailyscrums %}
+        <tr>
+            <td><a href="{{ path('dailyscrum_show', { 'idDaily': dailyscrum.idDaily }) }}">{{ dailyscrum.idDaily }}</a></td>
+            <td>{{ dailyscrum.title }}</td>
+            <td>{% if dailyscrum.dateModification %}{{ dailyscrum.dateModification|date('Y-m-d') }}{% endif %}</td>
+            <td>{% if dailyscrum.timeModification %}{{ dailyscrum.timeModification|date('H:i:s') }}{% endif %}</td>
+            <td>{{ dailyscrum.username }}</td>
+            <td class="table-action">
+                <a href="{{ path('dailyscrum_show', { 'idDaily': dailyscrum.idDaily }) }}" class="action-icon"><i class="mdi mdi-eye"></i></a>
+                <a href="{{ path('dailyscrum_edit', { 'idDaily': dailyscrum.idDaily }) }}" class="action-icon"><i class="mdi mdi-square-edit-outline"></i></a>
+                <a href="{{ path('daily_Delete', { 'idDaily': dailyscrum.idDaily }) }}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock%}
+
+{% block javascripts %}
+
+    <script>
+
+        $(document).ready(function () {
+            $('#my_table').DataTable({
+                dom: "<'row'<'col-sm-12'B>>" +
+                    "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                lengthMenu: [
+                    [ 5, 10, 20, -1 ],
+                    [ '5 rows', '10 rows', '20 rows', 'Show all' ]],
+                buttons: [
+                    'copy', 'csv' ,'excel', 'pdf'
+                ]
+            } );
+
+        });
+
+    </script>
+
+{% endblock %}

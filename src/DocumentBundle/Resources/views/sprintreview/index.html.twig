@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+
+<div class="row">
+    <div class="col-12 text-center" >
+        <div class="heading">
+            <h1 class="section-title">Sprint Review Documents</h1>
+            <h4 class="sub-title">List of your Sprint Review Documents from here ! </h4>
+            <br>
+            <br>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row mb-2">
+                    {% if is_granted('ROLE_PRODUCT_OWNER') or is_granted('ROLE_MASTER') or is_granted('ROLE_ADMIN') %}
+                    <div class="col-sm-4">
+                        <a href="{{ path('sprintreview_new') }}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle mr-2"></i> Add Sprint Review</a>
+                    </div>
+                    {% endif %}
+                    <div class="col-sm-8">
+                        <div class="text-sm-right">
+                                <label>
+                                    <input id="my_input" type="search" class="form-control form-control-sm" placeholder="Searching here ..." aria-controls="products-datatable">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+
+
+                            <div class="count">
+                                <h5 class="sub-title"> There is {{ sprintreviews.getTotalItemCount }} Files </h5>
+                            </div>
+                            <table  id="my_table" class="table table-centered dt-responsive nowrap w-100">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>{{ knp_pagination_sortable(sprintreviews, 'Id', 'sr.idReview') }}</th>
+                                    <th>{{ knp_pagination_sortable(sprintreviews, 'File Name', 'sr.title') }}</th>
+                                    <th>{{ knp_pagination_sortable(sprintreviews, 'Modify Date', 'sr.dateModification') }}</th>
+                                    <th>{{ knp_pagination_sortable(sprintreviews, 'Modify Time', 'sr.timeModification') }}</th>
+                                    <th>Created By</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for sprintreview in sprintreviews %}
+                                    <tr>
+                                        <td><a href="{{ path('sprintreview_show', { 'idReview': sprintreview.idReview }) }}">{{ sprintreview.idReview }}</a></td>
+                                        <td>{{ sprintreview.title }}</td>
+                                        <td>{% if sprintreview.dateModification %}{{ sprintreview.dateModification|date('Y-m-d') }}{% endif %}</td>
+                                        <td>{% if sprintreview.timeModification %}{{ sprintreview.timeModification|date('H:i:s') }}{% endif %}</td>
+                                        <td>{{ sprintreview.user }}</td>
+                                        <td>
+                                            {% if is_granted('ROLE_DEVELOPER') or is_granted('ROLE_PRODUCT_OWNER') or is_granted('ROLE_MASTER') or is_granted('ROLE_ADMIN') %}
+                                                <a href="{{ path('sprintreview_show', { 'idReview': sprintreview.idReview }) }}" class="action-icon"><i class="mdi mdi-eye"></i></a>
+                                            {% endif %}
+                                            {% if is_granted('ROLE_PRODUCT_OWNER') or is_granted('ROLE_MASTER') or is_granted('ROLE_ADMIN') %}
+                                                <a href="{{ path('sprintreview_edit', { 'idReview': sprintreview.idReview }) }}" class="action-icon"><i class="mdi mdi-square-edit-outline"></i></a>
+                                            {% endif %}
+                                            {% if is_granted('ROLE_DEVELOPER') or is_granted('ROLE_PRODUCT_OWNER') or is_granted('ROLE_MASTER') or is_granted('ROLE_ADMIN') %}
+                                                <a href="{{ path('Rev_Delete', { 'idReview': sprintreview.idReview }) }}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                            {% endif %}
+
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            {# display navigation #}
+                            <div class="navigation">
+                                {{ knp_pagination_render(sprintreviews) }}
+                            </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('#my_input').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#my_table').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                        {
+                            found = 'true';
+                        }
+                    });
+                    if(found == 'true')
+                    {
+                        $(this).show();
+                    }
+                    else
+                    {
+                        $(this).hide();
+                    }
+                });
+            }
+        });
+    </script>
+
+{% endblock %}
